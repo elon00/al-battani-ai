@@ -1,0 +1,55 @@
+{
+  "mcpServers": {
+    "al-battani-ai": {
+      "command": "cargo",
+      "args": [
+        "run",
+        "--release",
+        "--quiet"
+      ],
+      "env": {
+        "RUST_LOG": "info",
+        "TITAN_PROTOCOL": "BATTANI",
+        "TARGET_CHAIN": "Solana",
+        "FIPS_203_LEVEL": "ML-KEM-768",
+        "FIPS_204_LEVEL": "ML-DSA-65"
+      },
+      "tools": [
+        {
+          "name": "calculate_solar_year_ephemeris",
+          "description": "Computes high-precision solar orbital velocity and equinoctial precession coordinates",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "julian_date": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "julian_date"
+            ]
+          }
+        },
+        {
+          "name": "solve_spherical_sine_cosine",
+          "description": "Evaluates spherical right-triangle trigonometric formulas for celestial coordinates",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "azimuth": {
+                "type": "number"
+              },
+              "altitude": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "azimuth",
+              "altitude"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
